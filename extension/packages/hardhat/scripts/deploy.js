@@ -1,40 +1,45 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-  console.log("Deploying ERC-7857 AI Agents contracts...");
+  const [deployer] = await ethers.getSigners();
+  console.log("Deploying ERC-7857 contracts with account:", deployer.address);
+  console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  // Deploy the verifier contract first
-  const OasisTEEVerifier = await ethers.getContractFactory("OasisTEEVerifier");
-  console.log("Deploying OasisTEEVerifier...");
-  const verifier = await OasisTEEVerifier.deploy();
-  await verifier.waitForDeployment();
-  console.log("OasisTEEVerifier deployed to:", await verifier.getAddress());
+  // Deploy MockOracle for testing
+  const MockOracle = await ethers.getContractFactory("MockOracle");
+  console.log("Deploying MockOracle...");
+  const oracle = await MockOracle.deploy();
+  await oracle.deployed();
+  console.log("MockOracle deployed to:", oracle.address);
 
-  // Deploy the main ERC7857AIAgents contract
-  const ERC7857AIAgents = await ethers.getContractFactory("ERC7857AIAgents");
-  console.log("Deploying ERC7857AIAgents...");
-  const agentContract = await ERC7857AIAgents.deploy(await verifier.getAddress());
-  await agentContract.waitForDeployment();
-  console.log("ERC7857AIAgents deployed to:", await agentContract.getAddress());
+  // Deploy INFT contract
+  const INFT = await ethers.getContractFactory("INFT");
+  console.log("Deploying INFT...");
+  const inft = await INFT.deploy("AI Agent NFTs", "AINFT", oracle.address);
+  await inft.deployed();
+  console.log("INFT deployed to:", inft.address);
+
+  // Note: OasisTEEVerifier and ERC7857AIAgents can be added in extended implementations
+  // For now, we have the core INFT contract implementing ERC-7857
 
   // Verify deployment
   console.log("\n=== Deployment Summary ===");
   console.log("Network:", network.name);
-  console.log("OasisTEEVerifier:", await verifier.getAddress());
-  console.log("ERC7857AIAgents:", await agentContract.getAddress());
+  console.log("MockOracle:", oracle.address);
+  console.log("INFT (ERC-7857):", inft.address);
   
   // Test basic functionality
-  console.log("\n=== Testing Contract ===");
-  console.log("Contract name:", await agentContract.name());
-  console.log("Contract symbol:", await agentContract.symbol());
-  console.log("Verifier address:", await agentContract.verifier());
+  console.log("\n=== Testing Contracts ===");
+  console.log("INFT name:", await inft.name());
+  console.log("INFT symbol:", await inft.symbol());
+  console.log("Data Verifier:", await inft.dataVerifier());
 
   // Save deployment info
   const deploymentInfo = {
     network: network.name,
     chainId: network.config.chainId,
-    verifier: await verifier.getAddress(),
-    agentContract: await agentContract.getAddress(),
+    mockOracle: oracle.address,
+    inft: inft.address,
     deploymentTime: new Date().toISOString()
   };
 
