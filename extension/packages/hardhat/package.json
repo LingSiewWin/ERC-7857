@@ -1,0 +1,7 @@
+{
+  "name": "hardhat-erc7857-ai-agents",
+  "version": "1.0.0",
+  "dependencies": {
+    "dotenv": "^17.2.1"
+  }
+}

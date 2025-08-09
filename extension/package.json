@@ -1,0 +1,9 @@
+{
+  "name": "erc7857-ai-agents-extension",
+  "version": "1.0.0",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}
