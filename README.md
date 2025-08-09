@@ -27,12 +27,14 @@ npx create-eth@latest -e LingSiewWin/ERC-7857
 
 ### 🌟 Key Features
 - ✅ **ERC-7857 Standard**: Complete implementation of Intelligent NFTs
-- ✅ **TEE Integration**: Trusted Execution Environment verification
+- ✅ **TEE Integration**: Trusted Execution Environment verification  
 - ✅ **Encrypted Metadata**: Secure AI agent data with authorized access
 - ✅ **Cloning Support**: Create derivative AI agents
 - ✅ **Multi-Network**: Oasis Sapphire, Arbitrum, local development
 - ✅ **Production Ready**: Comprehensive test suite with 100% coverage
 - ✅ **React Components**: Ready-to-use UI components with Wagmi integration
+- ✅ **DataDescriptions**: AI agent metadata descriptions support
+- 🔧 **0G SDK Integration**: Decentralized storage integration (in development)
 
 ## ⚡ Quick Start
 
@@ -132,17 +134,26 @@ await inft.authorizeUsage(tokenId, userAddress, 3600);
 
 ## 🌐 Supported Networks
 
-| Network | Chain ID | Purpose |
-|---------|----------|---------|
-| Hardhat Local | 31337 | Development & testing |
-| Oasis Sapphire Testnet | 0x5aff | Privacy-preserving smart contracts |
-| Arbitrum Testnet | 421614 | Layer 2 scaling |
+| Network | Chain ID | Status | Purpose |
+|---------|----------|--------|---------|
+| Hardhat Local | 31337 | ✅ **Deployed** | Development & testing |
+| Arbitrum Testnet | 421614 | ✅ **Deployed** | Layer 2 scaling |
+| Oasis Sapphire Testnet | 0x5aff | 🔧 Ready | Privacy-preserving smart contracts |
 
-Deploy to specific networks:
+### **Live Deployments:**
+
+**Arbitrum Testnet (Chain ID: 421614)**
+- MockOracle: `0x0b60881F525D925472d6d522f6309FD6F78Ecb08`
+- INFT (ERC-7857): `0x19922d2d1e2b45c81c69030B709f462B2289f5A9`
+
+**Localhost (for development)**
+- MockOracle: `0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0`
+- INFT (ERC-7857): `0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9`
+
+Deploy to networks:
 ```bash
-yarn deploy --network sapphireTestnet  # For TEE verification
-yarn deploy --network arbitrumTestnet  # For L2 scaling  
-yarn deploy --network localhost        # For development
+npx hardhat run scripts/deploy.js --network arbitrumTestnet  # L2 scaling  
+npx hardhat run scripts/deploy.js --network localhost        # Development
 ```
 
 ## 🔧 Core Functions
