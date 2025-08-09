@@ -1,7 +1,17 @@
 {
   "name": "hardhat-erc7857-ai-agents",
   "version": "1.0.0",
+  "scripts": {
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy.js",
+    "compile": "hardhat compile"
+  },
   "dependencies": {
-    "dotenv": "^17.2.1"
+    "@openzeppelin/contracts": "^4.9.0",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "hardhat": "^2.19.0"
   }
 }

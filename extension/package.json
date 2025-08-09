@@ -1,9 +1,54 @@
 {
-  "name": "erc7857-ai-agents-extension",
+  "name": "@lingsiewwin/scaffold-erc7857",
   "version": "1.0.0",
+  "description": "Scaffold-ETH 2 extension for ERC-7857 Intelligent Non-Fungible Tokens (INFTs)",
+  "keywords": [
+    "ethereum",
+    "nft",
+    "ai",
+    "erc7857",
+    "scaffold-eth",
+    "hardhat",
+    "solidity",
+    "nextjs",
+    "react",
+    "blockchain",
+    "tee",
+    "oasis"
+  ],
+  "author": "LingSiewWin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LingSiewWin/ERC-7857.git"
+  },
+  "homepage": "https://github.com/LingSiewWin/ERC-7857#readme",
+  "bugs": {
+    "url": "https://github.com/LingSiewWin/ERC-7857/issues"
+  },
+  "scripts": {
+    "build": "yarn workspace @se-2/hardhat compile",
+    "deploy": "yarn workspace @se-2/hardhat deploy",
+    "test": "yarn workspace @se-2/hardhat test",
+    "dev": "yarn workspace @se-2/nextjs dev",
+    "start": "yarn workspace @se-2/nextjs start",
+    "lint": "yarn workspace @se-2/nextjs lint",
+    "format": "prettier --write . --ignore-path .gitignore"
+  },
   "workspaces": {
     "packages": [
       "packages/*"
     ]
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8",
+    "prettier-plugin-solidity": "^1.1.3"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "yarn": ">=1.22.0"
   }
 }
