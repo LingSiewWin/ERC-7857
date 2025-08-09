@@ -5,7 +5,7 @@ A production-ready Scaffold-ETH extension that adds ERC-7857 AI Agent NFT functi
 ## Installation
 
 ```bash
-npx create-eth@latest -e LingSiewWin/ERC-7857-AI-Agent
+npx create-eth@latest -e LingSiewWin/ERC-7857
 ```
 
 ## What You Get
@@ -29,7 +29,7 @@ This extension adds a complete ERC-7857 AI Agent NFT system to your Scaffold-ETH
 
 1. **Install the extension**:
    ```bash
-   npx create-eth@latest -e LingSiewWin/ERC-7857-AI-Agent
+   npx create-eth@latest -e LingSiewWin/ERC-7857
    cd your-project-name
    ```
 
